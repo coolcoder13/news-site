@@ -37,14 +37,14 @@ function App() {
   const [weatherData, setWeatherData] = useState<WeatherResponse>()
 
   useEffect(() => {
-    fetch('https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=7d2ec379b89d46cc9f71d1f3cf8b9bb5').then(
+    fetch(`https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=${process.env.TOP_HEADLINE_KEY}`).then(
       (res) => res.json()
     ).then((res) => {
       console.log(res)
       setHeadLinesData(res)
     })
 
-    fetch('https://api.openweathermap.org/data/2.5/onecall?lat=20.5937&lon=78.9629&exclude=minutely,hourly&appid=620ca0f7265f47adfbbb336ee139c430').then(
+    fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=20.5937&lon=78.9629&exclude=minutely,hourly&appid=${process.env.WEATHER_API_KEY}`).then(
       (res) => res.json()).then((res) => {
         console.log(res)
         setWeatherData(res)
